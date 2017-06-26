@@ -2,7 +2,7 @@ function changeHeading(ev){
     ev.preventDefault()
     const f = ev.target
     const name = f.personName.value
-    const heading = document.querySelector('#stats')
+    const heading = document.querySelector('#hometown')
     heading.textContent = name
 }
 
