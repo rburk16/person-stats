@@ -2,15 +2,33 @@ function changePage(ev){
     ev.preventDefault()
     const f = ev.target
     const name = f.personName.value
-    const color = f.personColor.value
+    const age = f.personAge.value
+    const color = f.favoriteColor.value
 
-    const heading = document.querySelector('#stats')
-    const p = document.createElement('p')
+    const div = document.querySelector('#stats')
+    const list = document.createElement('ul')
 
-    p.textContent = `${name}, ${color}`
-    p.style.color = color
+    const nameItem = document.createElement('li')
+    nameItem.textContent = `Name: ${name}`
+    list.appendChild(nameItem)
 
-    heading.appendChild(p)
+    const ageItem = document.createElement('li')
+    ageItem.textContent = `Age: ${age}`
+    list.appendChild(ageItem)
+    
+    const colorItem = document.createElement('li')
+    colorItem.textContent = 'Favorite Color: '
+    
+    const colorDiv = document.createElement('div')
+    colorDiv.style.backgroundColor = color
+    colorDiv.style.width = '6rem'
+    colorDiv.style.height = '3rem'
+    
+    colorItem.appendChild(colorDiv)
+
+    list.appendChild(colorItem)
+
+    div.appendChild(list)
 }
 
 
