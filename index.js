@@ -1,28 +1,18 @@
-const myArray = []
-const arrayList = []
-
-function changeHeading(ev){
+function changePage(ev){
     ev.preventDefault()
     const f = ev.target
     const name = f.personName.value
-    const heading = document.querySelector('h1')
-    heading.innerHTML = name
-    myArray.push(name)
-}
-
-function changeParagraph(ev){
-    ev.preventDefault()
-    const f = ev.target
     const color = f.personColor.value
-    const paragraph = document.querySelector('#someString')
-    arrayList.push(color)
-    paragraph.textContent = myArray[0] + arrayList
-    paragraph.style.color = color
+
+    const heading = document.querySelector('#stats')
+    const p = document.createElement('p')
+
+    p.textContent = `${name}, ${color}`
+    p.style.color = color
+
+    heading.appendChild(p)
 }
 
 
 const personForm = document.querySelector('#person-form')
-personForm.addEventListener('submit', changeHeading)
-
-const colorForm = document.querySelector('#person-form')
-colorForm.addEventListener('submit', changeParagraph)
+personForm.addEventListener('submit', changePage)
