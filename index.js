@@ -1,4 +1,4 @@
-function changePage(ev){
+function handleSubmit(ev) {
     ev.preventDefault()
     const f = ev.target
     const name = f.personName.value
@@ -7,30 +7,37 @@ function changePage(ev){
 
     const div = document.querySelector('#stats')
     const list = document.createElement('ul')
-
-    const nameItem = document.createElement('li')
-    nameItem.textContent = `Name: ${name}`
-    list.appendChild(nameItem)
-
-    const ageItem = document.createElement('li')
-    ageItem.textContent = `Age: ${age}`
-    list.appendChild(ageItem)
     
-    const colorItem = document.createElement('li')
-    colorItem.textContent = 'Favorite Color: '
-    
+    renderList(list,name,age,color)
+        
+    div.appendChild(list)
+
+}
+
+function renderColor(color) {
     const colorDiv = document.createElement('div')
     colorDiv.style.backgroundColor = color
     colorDiv.style.width = '6rem'
     colorDiv.style.height = '3rem'
-    
-    colorItem.appendChild(colorDiv)
-
-    list.appendChild(colorItem)
-
-    div.appendChild(list)
+    return colorDiv
 }
 
+function renderListItem(list,name,age,color) {
+    const item1 = document.createElement('li')
+    const item2 = document.createElement('li')
+    const item3 = document.createElement('li')
+    item1.textContent = `Name: ${name}`
+    item2.textContent = `Age: ${age}`
+    item3.textContent = `Favorite Color: `
+    item3.appendChild(renderColor(color))
+    list.appendChild(item1)
+    list.appendChild(item2)
+    list.appendChild(item3)
+}
+
+function renderList(list,name,age,color) {
+    renderListItem(list,name,age,color)
+}
 
 const personForm = document.querySelector('#person-form')
-personForm.addEventListener('submit', changePage)
+personForm.addEventListener('submit', handleSubmit)
