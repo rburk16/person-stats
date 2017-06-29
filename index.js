@@ -6,37 +6,36 @@ function handleSubmit(ev) {
     const color = f.favoriteColor.value
 
     const div = document.querySelector('#stats')
-    const list = document.createElement('ul')
     
-    renderList(list,name,age,color)
-        
-    div.appendChild(list)
+    renderColor(color)
+
+    div.appendChild(renderList("Name",name,"Age",age,"Favorite Color",color))
 
 }
 
 function renderColor(color) {
     const colorDiv = document.createElement('div')
+    const colorItem = document.createElement('li')
     colorDiv.style.backgroundColor = color
     colorDiv.style.width = '6rem'
     colorDiv.style.height = '3rem'
+
     return colorDiv
 }
 
-function renderListItem(list,name,age,color) {
-    const item1 = document.createElement('li')
-    const item2 = document.createElement('li')
-    const item3 = document.createElement('li')
-    item1.textContent = `Name: ${name}`
-    item2.textContent = `Age: ${age}`
-    item3.textContent = `Favorite Color: `
-    item3.appendChild(renderColor(color))
-    list.appendChild(item1)
-    list.appendChild(item2)
-    list.appendChild(item3)
+function renderListItem(prop,value) {
+    const item = document.createElement('li')
+    item.textContent = `prop: ${value}`
+    return item
 }
 
-function renderList(list,name,age,color) {
-    renderListItem(list,name,age,color)
+function renderList(prop1,propValue1,prop2,propValue2,prop3,propValue3) {
+    const list = document.createElement('ul')
+    list.appendChild(renderListItem(prop1,propValue1))
+    list.appendChild(renderListItem(prop2,propValue2))
+    list.appendChild(renderListItem(prop3,propValue3))
+    list.appendChild(renderColor(propValue3))
+    return list
 }
 
 const personForm = document.querySelector('#person-form')
